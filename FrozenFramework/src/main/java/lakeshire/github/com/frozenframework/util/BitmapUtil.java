@@ -22,31 +22,47 @@ public class BitmapUtil {
         return context.getResources();
     }
 
+    /**
+     * 资源 -> 位图
+     */
     public static Bitmap resource2Bitmap(Context context, int resource) {
         Resources res = getResources(context);
-        Bitmap bitmap = BitmapFactory.decodeResource(res, resource);
-        return bitmap;
+        return BitmapFactory.decodeResource(res, resource);
     }
 
-    public static Drawable bitmap2Drawable(Bitmap bitmap) {
-        Drawable drawable = new BitmapDrawable(bitmap);
-        return drawable;
+    /**
+     * 位图 -> Drawable
+     */
+    public static Drawable bitmap2Drawable(Context context, Bitmap bitmap) {
+        return new BitmapDrawable(getResources(context), bitmap);
     }
 
+    /**
+     * Drawable -> 位图
+     */
     public static Bitmap drawable2Bitmap(Drawable drawable) {
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565);
+        Bitmap bitmap = Bitmap.createBitmap(
+                drawable.getIntrinsicWidth(),
+                drawable.getIntrinsicHeight(),
+                drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565);
         Canvas canvas = new Canvas(bitmap);
         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
         drawable.draw(canvas);
         return bitmap;
     }
 
+    /**
+     * 位图 -> bytes
+     */
     public static byte[] bitmap2Bytes(Bitmap bitmap) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         return baos.toByteArray();
     }
 
+    /**
+     * bytes -> 位图
+     */
     public static Bitmap bytes2Bitmap(byte[] b) {
         if (b.length != 0) {
             return BitmapFactory.decodeByteArray(b, 0, b.length);
@@ -55,6 +71,9 @@ public class BitmapUtil {
         }
     }
 
+    /**
+     * 缩小
+     */
     public static Bitmap reduce(String path, int width, int height) {
         BitmapFactory.Options opt = new BitmapFactory.Options();
         opt.inJustDecodeBounds = true;
@@ -65,11 +84,13 @@ public class BitmapUtil {
 
         opt.inSampleSize = 1;
         if (width > height) {
-            if (picWidth > width)
+            if (picWidth > width) {
                 opt.inSampleSize = picWidth / width;
+            }
         } else {
-            if (picHeight > height)
+            if (picHeight > height) {
                 opt.inSampleSize = picHeight / height;
+            }
         }
 
         opt.inJustDecodeBounds = false;
@@ -77,6 +98,9 @@ public class BitmapUtil {
         return bm;
     }
 
+    /**
+     * 缩小
+     */
     public static Bitmap reduce(Context context, int res, int width, int height) {
         BitmapFactory.Options opt = new BitmapFactory.Options();
         opt.inJustDecodeBounds = true;
@@ -87,11 +111,13 @@ public class BitmapUtil {
 
         opt.inSampleSize = 1;
         if (width > height) {
-            if (picWidth > width)
+            if (picWidth > width) {
                 opt.inSampleSize = picWidth / width;
+            }
         } else {
-            if (picHeight > height)
+            if (picHeight > height) {
                 opt.inSampleSize = picHeight / height;
+            }
         }
 
         opt.inJustDecodeBounds = false;

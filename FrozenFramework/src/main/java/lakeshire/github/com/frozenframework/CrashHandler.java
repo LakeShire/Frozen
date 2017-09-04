@@ -3,6 +3,7 @@ package lakeshire.github.com.frozenframework;
 import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -45,13 +46,16 @@ public class CrashHandler implements UncaughtExceptionHandler {
             return null;
         }
 
-        String dirStr = Environment.getExternalStorageDirectory().getPath() + "/Android/data/" + ctx.getPackageName() + "/files/error/";
+        String dirStr = Environment.getExternalStorageDirectory().getPath() + "/Android/data/" +
+                ctx.getPackageName() + "/files/error/";
         File dir = new File(dirStr);
         if (!dir.exists()) {
             dir.mkdirs();
         }
 
-        String pathStr = Environment.getExternalStorageDirectory().getPath() + "/Android/data/" + ctx.getPackageName() + "/files/error/" + simpleDateFormat.format(new Date()) + ".log";
+        String pathStr = Environment.getExternalStorageDirectory().getPath() + "/Android/data/" +
+                ctx.getPackageName() + "/files/error/" + simpleDateFormat.format(new Date()) + "" +
+                ".log";
 
         File path = new File(pathStr);
         try {
@@ -87,10 +91,13 @@ public class CrashHandler implements UncaughtExceptionHandler {
 
         try {
             printWriter = new PrintWriter(new FileWriter(savePathFile, true));
-            logMessage = String.format("%s\r\n\r\nThread: %d\r\n\r\nMessage:\r\n\r\n%s\r\n\r\nStack Trace:\r\n\r\n%s", new Date(), thread.getId(), ex.getMessage(), Log.getStackTraceString(ex));
+            logMessage = String.format("%s\r\n\r\nThread: " +
+                    "%d\r\n\r\nMessage:\r\n\r\n%s\r\n\r\nStack Trace:\r\n\r\n%s", new Date(),
+                    thread.getId(), ex.getMessage(), Log.getStackTraceString(ex));
 
             printWriter.print(logMessage);
-            printWriter.print("\n\n---------------------------------------------------------------------------\n\n");
+            printWriter.print
+                    ("\n\n---------------------------------------------------------------------------\n\n");
         } catch (Throwable tr2) {
 
         } finally {

@@ -28,7 +28,8 @@ public class Blur {
                 return null;
             }
             Thread.currentThread().setPriority(Process.THREAD_PRIORITY_BACKGROUND);
-            Bitmap bitmap = sentBitmap.copy(sentBitmap.getConfig() == null ? Bitmap.Config.ARGB_8888 : sentBitmap.getConfig(), true);
+            Bitmap bitmap = sentBitmap.copy(sentBitmap.getConfig() == null ? Bitmap.Config
+                    .ARGB_8888 : sentBitmap.getConfig(), true);
 
             if (radius < 1) {
                 return (null);
@@ -179,7 +180,8 @@ public class Blur {
                 stackpointer = radius;
                 for (y = 0; y < h; y++) {
                     // Preserve alpha channel: ( 0xff000000 & pix[yi] )77 66 36
-                    pix[yi] = (0xff000000 & pix[yi]) | (dv[rsum] << 16) | (dv[gsum] << 8) | dv[bsum];
+                    pix[yi] = (0xff000000 & pix[yi]) | (dv[rsum] << 16) | (dv[gsum] << 8) |
+                            dv[bsum];
                     if (lightness != 0) {
                         pix[yi] = adjustLightness(pix[yi], lightness);
                     }

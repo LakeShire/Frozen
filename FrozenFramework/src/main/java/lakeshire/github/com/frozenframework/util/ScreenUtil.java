@@ -42,7 +42,8 @@ public class ScreenUtil {
     }
 
     public static void setFullScreen(Activity activity) {
-        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager
+                .LayoutParams.FLAG_FULLSCREEN);
     }
 
     public static int px2dp(Context context, float pxValue) {

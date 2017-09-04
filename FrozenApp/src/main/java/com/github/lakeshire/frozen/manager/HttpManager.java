@@ -39,6 +39,7 @@ public class HttpManager {
 
     /**
      * 处理标准的请求返回
+     *
      * @param <T>
      */
     class HttpResultFunc<T> implements Func1<ListEntity<T>, ListEntity<T>> {

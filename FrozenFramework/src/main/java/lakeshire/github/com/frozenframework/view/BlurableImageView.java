@@ -13,7 +13,9 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
 import java.lang.ref.WeakReference;
+
 import lakeshire.github.com.frozenframework.util.Blur;
 
 /**
@@ -93,7 +95,8 @@ public class BlurableImageView extends ImageView {
                     if (createdBlurBitmap == null) {
                         return;
                     }
-                    final Drawable blurDrawable = new BitmapDrawable(getResources(), createdBlurBitmap);
+                    final Drawable blurDrawable = new BitmapDrawable(getResources(),
+                            createdBlurBitmap);
                     if (Thread.currentThread().isInterrupted()) {
                         return;
                     }
@@ -110,12 +113,14 @@ public class BlurableImageView extends ImageView {
                                 td.setDrawableByLayerId(td.getId(1), blurDrawable);
                             } else {
                                 if (curDrawable == null) {
-                                    oldLayerDrawable = new ColorDrawable(getResources().getColor(android.R.color.transparent));
+                                    oldLayerDrawable = new ColorDrawable(getResources().getColor
+                                            (android.R.color.transparent));
                                 } else if (curDrawable instanceof BitmapDrawable) {
                                     oldLayerDrawable = curDrawable;
                                 }
 
-                                td = new TransitionDrawable(new Drawable[]{oldLayerDrawable, blurDrawable});
+                                td = new TransitionDrawable(new Drawable[]{oldLayerDrawable,
+                                        blurDrawable});
                                 td.setCrossFadeEnabled(true);
                                 td.setId(0, 0);
                                 td.setId(1, 1);
