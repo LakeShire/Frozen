@@ -127,13 +127,4 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
 
     @Override
     abstract public void onItemClick(AdapterView<?> parent, View view, int position, long id);
-
-    protected void refreshComplete() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mPtrFrameLayout.refreshComplete();
-            }
-        });
-    }
 }

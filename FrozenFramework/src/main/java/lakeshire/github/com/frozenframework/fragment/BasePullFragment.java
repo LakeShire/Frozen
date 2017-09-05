@@ -58,4 +58,13 @@ public abstract class BasePullFragment extends BaseFragment {
     protected abstract void onRefresh(PtrFrameLayout frame);
 
     protected abstract boolean checkCanRefresh(PtrFrameLayout frame, View content, View header);
+
+    protected void refreshComplete() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mPtrFrameLayout.refreshComplete();
+            }
+        });
+    }
 }

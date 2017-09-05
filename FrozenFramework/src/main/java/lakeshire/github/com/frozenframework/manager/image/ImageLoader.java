@@ -55,6 +55,13 @@ public class ImageLoader {
     }
 
     /**
+     * 加载原始大小的图片
+     */
+    public void loadImageOrigin(Context context, Image image, ImageView target) {
+        loadImage(context, image, 0, 0, 0, 0, 0, false, false, target);
+    }
+
+    /**
      * 加载图片
      *
      * @param context       上下文
@@ -102,6 +109,8 @@ public class ImageLoader {
 
         if (centerCrop) {
             creator.resize(width, height).centerCrop();
+        } else {
+            creator.fit();
         }
 
         creator.into(target);
