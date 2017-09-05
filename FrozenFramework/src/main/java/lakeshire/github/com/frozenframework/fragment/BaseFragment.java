@@ -44,7 +44,8 @@ public abstract class BaseFragment extends LifecycleFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
+            savedInstanceState) {
         mContainerView = (ViewGroup) inflater.inflate(getContainerLayoutId(), container, false);
         if (mContainerView instanceof FrameLayout) {
             mLayoutParams = new FrameLayout.LayoutParams(
@@ -125,73 +126,87 @@ public abstract class BaseFragment extends LifecycleFragment {
 
     public void showLoadingLayout() {
         hideAllLayout();
-        if (canUpdateUi()) {
-            if (mLoadingLayout == null) {
-                mLoadingLayout = View.inflate(getContext(), getLoadingLayoutId(), null);
-                mContainerView.addView(mLoadingLayout, mLayoutParams);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mLoadingLayout == null) {
+                    mLoadingLayout = View.inflate(getContext(), getLoadingLayoutId(), null);
+                    mContainerView.addView(mLoadingLayout, mLayoutParams);
+                } else {
+                    mLoadingLayout.setVisibility(View.VISIBLE);
+                }
             }
-        } else {
-            mLoadingLayout.setVisibility(View.VISIBLE);
-        }
+        });
     }
 
     public void showNetworkErrorLayout() {
         hideAllLayout();
-        if (canUpdateUi()) {
-            if (mNetworkErrorLayout == null) {
-                mNetworkErrorLayout = View.inflate(getContext(), getNetworkErrorLayoutId(), null);
-                mNetworkErrorLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        refresh();
-                    }
-                });
-                mContainerView.addView(mNetworkErrorLayout, mLayoutParams);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mNetworkErrorLayout == null) {
+                    mNetworkErrorLayout = View.inflate(getContext(), getNetworkErrorLayoutId(),
+                            null);
+                    mNetworkErrorLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            refresh();
+                        }
+                    });
+                    mContainerView.addView(mNetworkErrorLayout, mLayoutParams);
+                } else {
+                    mNetworkErrorLayout.setVisibility(View.VISIBLE);
+                }
             }
-        } else {
-            mNetworkErrorLayout.setVisibility(View.VISIBLE);
-        }
+        });
     }
 
     public void showNoContentLayout() {
         hideAllLayout();
-        if (canUpdateUi()) {
-            if (mNoContentLayout == null) {
-                mNoContentLayout = View.inflate(getContext(), getNoContentLayoutId(), null);
-                mNoContentLayout.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        refresh();
-                    }
-                });
-                mContainerView.addView(mNoContentLayout, mLayoutParams);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mNoContentLayout == null) {
+                    mNoContentLayout = View.inflate(getContext(), getNoContentLayoutId(), null);
+                    mNoContentLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            refresh();
+                        }
+                    });
+                    mContainerView.addView(mNoContentLayout, mLayoutParams);
+                } else {
+                    mNoContentLayout.setVisibility(View.VISIBLE);
+                }
             }
-        } else {
-            mNoContentLayout.setVisibility(View.VISIBLE);
-        }
+        });
     }
 
     public void hideAllLayout() {
-        if (canUpdateUi()) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (mNoContentLayout != null) {
-                        mNoContentLayout.setVisibility(View.GONE);
-                    }
-                    if (mNetworkErrorLayout != null) {
-                        mNetworkErrorLayout.setVisibility(View.GONE);
-                    }
-                    if (mLoadingLayout != null) {
-                        mLoadingLayout.setVisibility(View.GONE);
-                    }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (mNoContentLayout != null) {
+                    mNoContentLayout.setVisibility(View.GONE);
                 }
-            });
-        }
+                if (mNetworkErrorLayout != null) {
+                    mNetworkErrorLayout.setVisibility(View.GONE);
+                }
+                if (mLoadingLayout != null) {
+                    mLoadingLayout.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     public boolean canUpdateUi() {
         return isAdded() && !isRemoving() && !isDetached() && getActivity() != null;
+    }
+
+    public void runOnUiThread(Runnable runnable) {
+        if (canUpdateUi()) {
+            getActivity().runOnUiThread(runnable);
+        }
     }
 }
 

@@ -3,4 +3,7 @@
     <item type="id" name="container"/>
     <item type="id" name="ptr_frame" />
     <item type="id" name="list" />
+    <item name="view_holder_position" type="id" />
+    <item name="view_holder_data" type="id" />
+    <item name="view_holder" type="id" />
 </resources>
