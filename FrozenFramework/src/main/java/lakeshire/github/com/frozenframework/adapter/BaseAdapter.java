@@ -3,11 +3,14 @@ package lakeshire.github.com.frozenframework.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.List;
-
 import lakeshire.github.com.frozenframework.R;
 
+/**
+ * ListView适配器
+ *
+ * @author lakeshire
+ */
 public abstract class BaseAdapter<T> extends android.widget.BaseAdapter implements View
         .OnClickListener {
     protected Context mContext;

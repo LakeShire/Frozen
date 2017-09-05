@@ -20,6 +20,8 @@ import lakeshire.github.com.frozenframework.activity.BaseActivity;
 
 /**
  * Fragment基类
+ *
+ * @author lakeshire
  */
 public abstract class BaseFragment extends LifecycleFragment {
 

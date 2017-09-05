@@ -3,6 +3,11 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="white_40">#66FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="orange">#f86442</color>
+
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="activate_text_color">#FF666666</color>
 
     <!-- ViewPagerIndicator -->
     <color name="vpi__background_holo_dark">#ff000000</color>
@@ -13,4 +18,6 @@
     <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
     <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
     <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
+
+    <color name="theme">@color/orange</color>
 </resources>

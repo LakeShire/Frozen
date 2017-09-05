@@ -93,7 +93,8 @@ public class ViewHolder {
     public void setImageResource(int resId, String url, int defaultResId) {
         if (resId > 0 && !TextUtils.isEmpty(url)) {
             if (getItemView(resId) != null && getItemView(resId) instanceof ImageView) {
-                ImageLoader.getInstance().loadImage(mContext, new Image(url), (ImageView) getItemView(resId));
+                ImageLoader.getInstance().loadImage(mContext, new Image(url), (ImageView)
+                        getItemView(resId));
 
             }
         }
