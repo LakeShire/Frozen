@@ -5,11 +5,11 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import lakeshire.github.com.frozenframework.fragment.HolderFragment;
+import lakeshire.github.com.frozenframework.fragment.BottomBarFragment;
 import lakeshire.github.com.frozenframework.fragment.IPager;
 import lakeshire.github.com.frozenframework.util.CustomToast;
 
-public class MainFragment extends HolderFragment {
+public class MainFragment extends BottomBarFragment {
     @Override
     protected List<IPager> initFragments() {
         List<IPager> fragments = new ArrayList<>();
@@ -25,7 +25,17 @@ public class MainFragment extends HolderFragment {
 
     @Override
     protected String[] getTitles() {
-        return new String[] {"音乐", "游戏", "电影"};
+        return new String[] {"首页", "分类", "我的"};
+    }
+
+    @Override
+    protected int[] getIcons() {
+        return new int[] { R.drawable.ic_home, R.drawable.ic_category, R.drawable.ic_me };
+    }
+
+    @Override
+    protected int[] getActiveColors() {
+        return new int[] { R.color.colorPrimary, R.color.orange, R.color.colorAccent};
     }
 
     @Override

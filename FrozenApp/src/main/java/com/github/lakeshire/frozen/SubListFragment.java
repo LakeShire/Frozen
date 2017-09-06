@@ -40,7 +40,7 @@ public class SubListFragment extends BaseListFragment<String> implements IPager 
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        startFragment(SubFragment.class, null);
+//        startFragment(BottomBarFragment.class, null);
     }
 
     @Override

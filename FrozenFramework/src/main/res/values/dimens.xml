@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="status_bar_place_holder_height">0dp</dimen>
+
+    <!-- BottomNavigationBar -->
+    <!-- https://github.com/Ashok-Varma/BottomNavigation/issues/70 -->
+    <dimen name="fixed_height_bottom_padding">4dp</dimen>
+    <dimen name="fixed_label_active">12sp</dimen>
 </resources>
