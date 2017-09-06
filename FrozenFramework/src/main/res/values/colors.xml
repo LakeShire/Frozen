@@ -5,6 +5,8 @@
     <color name="white_40">#66FFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="orange">#f86442</color>
+    <color name="black_lighter">#323232</color>
+    <color name="divider">#dedede</color>
 
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="activate_text_color">#FF666666</color>

@@ -7,4 +7,24 @@
         <item name="android:layout_marginLeft">6dp</item>
         <item name="android:layout_marginRight">6dp</item>
     </style>
+
+    <!-- 菜单标题 -->
+    <style name="menu_title_style">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black_lighter</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- 菜单关闭按钮 -->
+    <style name="menu_btn_style">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center_vertical|left</item>
+    </style>
+
+    <style name="AnimationFade">
+        <!-- PopupWindow左右弹出的效果 -->
+        <item name="android:windowEnterAnimation">@anim/in_left_to_right</item>
+        <item name="android:windowExitAnimation">@anim/out_right_to_left</item>
+    </style>
 </resources>

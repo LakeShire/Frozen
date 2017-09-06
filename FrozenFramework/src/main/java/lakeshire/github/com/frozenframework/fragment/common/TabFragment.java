@@ -1,4 +1,4 @@
-package lakeshire.github.com.frozenframework.fragment;
+package lakeshire.github.com.frozenframework.fragment.common;
 
 import android.graphics.Color;
 import android.view.View;
@@ -7,6 +7,8 @@ import java.util.List;
 
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import lakeshire.github.com.frozenframework.R;
+import lakeshire.github.com.frozenframework.fragment.IPager;
+import lakeshire.github.com.frozenframework.fragment.AbsPageHolderFragment;
 import lakeshire.github.com.frozenframework.util.ScreenUtil;
 import lakeshire.github.com.frozenframework.view.PagerSlidingTabStrip;
 
@@ -15,7 +17,7 @@ import lakeshire.github.com.frozenframework.view.PagerSlidingTabStrip;
  *
  * @author lakeshire
  */
-abstract public class TabFragment extends PageHolderFragment {
+abstract public class TabFragment extends AbsPageHolderFragment {
     protected PagerSlidingTabStrip mTabs;
 
     @Override

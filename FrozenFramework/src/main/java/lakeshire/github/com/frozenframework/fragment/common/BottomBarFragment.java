@@ -1,4 +1,4 @@
-package lakeshire.github.com.frozenframework.fragment;
+package lakeshire.github.com.frozenframework.fragment.common;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -8,12 +8,13 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import lakeshire.github.com.frozenframework.R;
+import lakeshire.github.com.frozenframework.fragment.AbsPageHolderFragment;
 
 /**
  * Created by louis.liu on 2017/9/6.
  */
 
-abstract public class BottomBarFragment extends PageHolderFragment implements BottomNavigationBar
+abstract public class BottomBarFragment extends AbsPageHolderFragment implements BottomNavigationBar
         .OnTabSelectedListener {
     private BottomNavigationBar mBottomNavigationBar;
 

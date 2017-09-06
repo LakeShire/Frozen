@@ -14,7 +14,7 @@ import lakeshire.github.com.frozenframework.adapter.PageFragmentAdapter;
  *
  * @author lakeshire
  */
-abstract public class PageHolderFragment extends BasePullFragment {
+abstract public class AbsPageHolderFragment extends BasePullFragment {
     protected ViewPager mPager;
     protected PageFragmentAdapter mAdapter;
 

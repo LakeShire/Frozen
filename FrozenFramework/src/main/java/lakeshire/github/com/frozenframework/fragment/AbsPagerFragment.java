@@ -3,7 +3,7 @@ package lakeshire.github.com.frozenframework.fragment;
 /**
  * 子页面
  */
-public abstract class PagerFragment extends BasePullFragment implements IPager {
+public abstract class AbsPagerFragment extends BasePullFragment implements IPager {
     private String tabTitle;
 
     public String getTabTitle() {

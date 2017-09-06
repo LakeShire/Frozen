@@ -5,7 +5,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import lakeshire.github.com.frozenframework.fragment.BottomBarFragment;
+import lakeshire.github.com.frozenframework.fragment.common.BottomBarFragment;
 import lakeshire.github.com.frozenframework.fragment.IPager;
 import lakeshire.github.com.frozenframework.util.CustomToast;
 

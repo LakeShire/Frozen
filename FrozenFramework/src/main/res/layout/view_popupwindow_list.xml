@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"  
+    android:orientation="vertical"
+    android:gravity="center" 
+    android:background="@color/white">  
+    
+    <TextView 
+        android:id="@+id/popup_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popup_window_item_height"
+        android:layout_marginLeft="@dimen/popup_window_item_margin_left"
+        android:layout_marginStart="@dimen/popup_window_item_margin_left"
+        style="@style/menu_title_style"
+        android:visibility="gone"/>
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider"
+        android:visibility="gone"/>
+    
+    <ListView  
+        android:id="@+id/popup_list"  
+        android:layout_width="match_parent"  
+        android:layout_height="wrap_content" 
+        android:divider="@null"
+        android:dividerHeight="0dp"/>  
+        
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider"/>
+    
+    <TextView 
+        android:id="@+id/popup_close"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/popup_window_item_height"
+        android:gravity="center"
+        style="@style/menu_btn_style"
+        android:text="关闭"/>
+</LinearLayout>  
