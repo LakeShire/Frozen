@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.srain.cube.views.ptr.PtrFrameLayout;
-import lakeshire.github.com.frozenframework.fragment.PagerFragment;
+import lakeshire.github.com.frozenframework.fragment.BasePullFragment;
 import lakeshire.github.com.frozenframework.util.ScreenUtil;
 import lakeshire.github.com.frozenframework.view.focusimage.Banner;
 import lakeshire.github.com.frozenframework.view.focusimage.FocusImageAdapter;
 import lakeshire.github.com.frozenframework.view.focusimage.FocusImageView;
 
-public class SubFragment extends PagerFragment {
+public class SubFragment extends BasePullFragment {
     private FocusImageAdapter mFocusImageAdapter;
     private FocusImageView mLayoutFocus;
     private List<Banner> mFocusImages = new ArrayList<>();
@@ -61,5 +61,20 @@ public class SubFragment extends PagerFragment {
     @Override
     protected boolean checkCanRefresh(PtrFrameLayout frame, View content, View header) {
         return mLayoutFocus.canOutsideRefresh();
+    }
+
+    @Override
+    protected String getTitle() {
+        return "子页面";
+    }
+
+    @Override
+    protected int getActionRes() {
+        return 0;
+    }
+
+    @Override
+    protected View.OnClickListener getActionListener() {
+        return null;
     }
 }

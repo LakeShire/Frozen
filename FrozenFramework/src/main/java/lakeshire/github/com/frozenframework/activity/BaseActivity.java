@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import lakeshire.github.com.frozenframework.R;
@@ -20,6 +22,11 @@ import lakeshire.github.com.frozenframework.util.StatusBarUtil;
  */
 public class BaseActivity extends LifecycleActivity {
 
+    private TextView mTvTitle;
+    private ImageView mIvBack;
+    private ImageView mIvAction;
+    private View mLayoutTitle;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,33 @@ public class BaseActivity extends LifecycleActivity {
         }
 
         setContentView(R.layout.act_main);
+        initTitleBar();
+    }
+
+    private void initTitleBar() {
+        mLayoutTitle = findView(R.id.layout_title);
+        mTvTitle = findView(R.id.tv_title);
+        mIvBack = findView(R.id.iv_back);
+        mIvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        mIvAction = findView(R.id.iv_action);
+    }
+
+    public void hideOrShowTitleBar(boolean show) {
+        mLayoutTitle.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    public void setTitle(String title) {
+        mTvTitle.setText(title);
+    }
+
+    public void setAction(int res, View.OnClickListener listener) {
+        mIvAction.setImageResource(res);
+        mIvAction.setOnClickListener(listener);
     }
 
     public <T extends View> T findView(int resId) {

@@ -90,7 +90,9 @@ public class LoadMoreListView extends ListView {
         mFooterView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                load();
+                if (mStatus != STATUS_NO_MORE && mStatus != STATUS_LOADING) {
+                    load();
+                }
             }
         });
     }

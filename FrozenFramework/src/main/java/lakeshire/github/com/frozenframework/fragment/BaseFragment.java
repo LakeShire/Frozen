@@ -113,6 +113,23 @@ public abstract class BaseFragment extends LifecycleFragment {
         return (T) view;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!(this instanceof IPager)) {
+            hideOrShowTitleBar(isTitleVisible());
+            if (isTitleVisible()) {
+                setTitle(getTitle());
+                setAction(getActionRes(), getActionListener());
+            }
+        }
+    }
+
     public boolean onBackPressed() {
         endFragment();
         return true;
@@ -209,6 +226,40 @@ public abstract class BaseFragment extends LifecycleFragment {
         if (canUpdateUi()) {
             getActivity().runOnUiThread(runnable);
         }
+    }
+
+    public void hideOrShowTitleBar(boolean show) {
+        if (getActivity() != null && getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).hideOrShowTitleBar(show);
+        }
+    }
+
+    public void setTitle(String title) {
+        if (getActivity() != null && getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).setTitle(title);
+        }
+    }
+
+    public void setAction(int res, View.OnClickListener listener) {
+        if (getActivity() != null && getActivity() instanceof BaseActivity) {
+            ((BaseActivity) getActivity()).setAction(res, listener);
+        }
+    }
+
+    protected boolean isTitleVisible() {
+        return true;
+    }
+
+    protected String getTitle() {
+        return "";
+    }
+
+    protected int getActionRes() {
+        return 0;
+    }
+
+    protected View.OnClickListener getActionListener() {
+        return null;
     }
 }
 

@@ -45,7 +45,8 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
     public void initUi() {
         super.initUi();
         mListView = findView(R.id.list);
-        mListView.setAdapter(getAdapter());
+        mAdapter = getAdapter();
+        mListView.setAdapter(mAdapter);
         mListView.setOnItemClickListener(this);
         if (mListView instanceof LoadMoreListView) {
             ((LoadMoreListView) mListView).setLoadMoreCallback(new LoadMoreListView.Callback() {
@@ -56,7 +57,7 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
 
                 @Override
                 public void initFooter(View view) {
-//                    initListFooter(view);
+                    initListFooter(view);
                 }
             });
         }
@@ -72,14 +73,14 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
 
     abstract protected BaseAdapter<T> getAdapter();
 
-//    protected void initListFooter(View view) {
+    protected void initListFooter(View view) {
 //        ImageView ivAnim = (ImageView) view.findViewById(R.id.iv_anim);
 //        FadingCircle cg = new FadingCircle();
 //        int color = getResources().getColor(R.color.main_theme_color);
 //        cg.setColor(color);
 //        ivAnim.setBackgroundDrawable(cg);
 //        cg.start();
-//    }
+    }
 
     abstract protected void loadMoreData();
 
@@ -98,9 +99,15 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
                         showNoContentLayout();
                     }
                 }
+
                 if (mAdapter != null) {
                     mAdapter.notifyDataSetChanged();
                 }
+
+                if (refresh) {
+                    refreshComplete();
+                }
+
                 if (mListView instanceof LoadMoreListView) {
                     switch (status) {
                         case STATUES_NETWORK_ERROR:

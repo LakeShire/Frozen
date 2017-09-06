@@ -40,13 +40,13 @@ abstract public class HolderFragment extends BasePullFragment {
         mPager = findView(R.id.pager);
         initTabStyle();
 
-        List<PagerFragment> fragments = initFragments();
+        List<IPager> fragments = initFragments();
         mAdapter = new PageFragmentAdapter(fragments, getChildFragmentManager());
         mPager.setAdapter(mAdapter);
         mTabs.setViewPager(mPager);
     }
 
-    abstract protected List<PagerFragment> initFragments();
+    abstract protected List<IPager> initFragments();
 
     abstract protected String[] getTitles();
 
