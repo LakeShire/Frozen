@@ -18,6 +18,7 @@ public class MainActivity extends BaseActivity {
             fragment = new MainFragment();
             fm.beginTransaction().add(R.id.container, fragment).commit();
         }
+
 //        final List<String> list = new ArrayList<>();
 //        list.add("A");
 //        list.add("B");

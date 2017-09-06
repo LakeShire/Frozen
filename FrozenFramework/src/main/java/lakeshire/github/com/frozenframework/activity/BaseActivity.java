@@ -1,7 +1,6 @@
 package lakeshire.github.com.frozenframework.activity;
 
 import android.arch.lifecycle.LifecycleActivity;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,10 +8,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import lakeshire.github.com.frozenframework.R;
+import lakeshire.github.com.frozenframework.util.StatusBarUtil;
 
 /**
  * Activity基类
@@ -25,9 +24,9 @@ public class BaseActivity extends LifecycleActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //透明状态栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        if (StatusBarUtil.handleStatus(this)) {
+            StatusBarUtil.transparencyBar(this);
+            StatusBarUtil.StatusBarLightMode(this);
         }
 
         setContentView(R.layout.act_main);

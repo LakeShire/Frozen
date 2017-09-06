@@ -51,7 +51,6 @@ public class SubFragment extends PagerFragment {
         mFocusImageAdapter = new FocusImageAdapter(getActivity().getApplicationContext(),
                 mFocusImages, screenWidth);
         mLayoutFocus.setAdapter(mFocusImageAdapter);
-//        mLayoutFocus.setDisallowInterceptTouchEventView(mPtrFrameLayout);
     }
 
     @Override
