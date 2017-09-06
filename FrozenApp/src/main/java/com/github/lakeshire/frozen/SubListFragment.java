@@ -46,8 +46,8 @@ public class SubListFragment extends BaseListFragment<String> implements IPager 
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        startFragment(BottomBarFragment.class, null);
-        PopupWindowManager.pop(getActivity(), view);
+        startFragment(SubFragment.class, null);
+//        PopupWindowManager.pop(getActivity(), view);
     }
 
     @Override

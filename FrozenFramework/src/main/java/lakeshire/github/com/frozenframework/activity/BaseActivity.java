@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import lakeshire.github.com.frozenframework.R;
+import lakeshire.github.com.frozenframework.fragment.BaseFragment;
 import lakeshire.github.com.frozenframework.util.StatusBarUtil;
 
 /**
@@ -110,5 +111,31 @@ public class BaseActivity extends LifecycleActivity {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        FragmentManager fm = getSupportFragmentManager();
+        BaseFragment f = (BaseFragment) fm.findFragmentById(R.id.container);
+        if (!f.onBackPressed()) {
+            if (!doBeforeBackPressed()) {
+                super.onBackPressed();
+            }
+        }
+    }
+
+    /**
+     * 结束Activity之前的处理
+     * @return true 不结束Activity false 结束Activity
+     */
+    protected boolean doBeforeBackPressed() {
+        return false;
+    }
+
+    /**
+     * 结束Activity
+     */
+    public void backNow() {
+        super.onBackPressed();
     }
 }

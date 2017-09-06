@@ -1,6 +1,7 @@
 package com.github.lakeshire.frozen;
 
 
+import android.content.DialogInterface;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import lakeshire.github.com.frozenframework.fragment.BasePullFragment;
+import lakeshire.github.com.frozenframework.util.DialogUtil;
 import lakeshire.github.com.frozenframework.util.ScreenUtil;
 import lakeshire.github.com.frozenframework.view.focusimage.Banner;
 import lakeshire.github.com.frozenframework.view.focusimage.FocusImageAdapter;
@@ -76,5 +78,16 @@ public class SubFragment extends BasePullFragment {
     @Override
     protected View.OnClickListener getActionListener() {
         return null;
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        DialogUtil.showTips(getActivity(), "确定退出？", "确定退出？", "确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                endFragment();
+            }
+        }, "取消", null);
+        return true;
     }
 }

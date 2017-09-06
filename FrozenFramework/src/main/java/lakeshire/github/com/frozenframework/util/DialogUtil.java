@@ -45,7 +45,7 @@ public class DialogUtil {
      * 无按钮对话框
      */
     public static Dialog showTips(Context context, String title, String des) {
-        return showTips(context, title, des, null, null);
+        return showTips(context, title, des, null, null, null, null);
     }
 
     /**
@@ -58,20 +58,26 @@ public class DialogUtil {
     /**
      * 有确定按钮对话框
      */
-    public static Dialog showTips(Context context, int title, int des, int btn, DialogInterface.OnDismissListener dismissListener) {
-        return showTips(context, context.getString(title), context.getString(des), context.getString(btn), dismissListener);
+    public static Dialog showTips(Context context, int title, int des, int btn, DialogInterface.OnClickListener listener) {
+        return showTips(context, context.getString(title), context.getString(des), context.getString(btn), listener);
     }
 
     /**
      * 有确定按钮对话框
      */
-    public static Dialog showTips(Context context, String title, String des, String btn, DialogInterface.OnDismissListener dismissListener) {
+    public static Dialog showTips(Context context, String title, String des, String okBtn, DialogInterface.OnClickListener listener) {
+        return showTips(context, title, des, okBtn, listener, null, null);
+    }
+
+    public static Dialog showTips(Context context, String title, String des, String okBtn, DialogInterface.OnClickListener okListener, String cancelBtn, DialogInterface.OnClickListener cancelListener) {
         AlertDialog.Builder builder = dialogBuilder(context, title, des);
         builder.setCancelable(true);
-        builder.setPositiveButton(btn, null);
+        builder.setPositiveButton(okBtn, okListener);
+//        if (!TextUtils.isEmpty(cancelBtn)) {
+            builder.setNegativeButton(cancelBtn, cancelListener);
+//        }
         Dialog dialog = builder.show();
         dialog.setCanceledOnTouchOutside(true);
-        dialog.setOnDismissListener(dismissListener);
         return dialog;
     }
 }

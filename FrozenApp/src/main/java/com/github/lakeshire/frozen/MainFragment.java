@@ -57,4 +57,13 @@ public class MainFragment extends BottomBarFragment {
             }
         };
     }
+
+    /**
+     * 主Fragment必须重写这个
+     * @return
+     */
+    @Override
+    public boolean onBackPressed() {
+        return false;
+    }
 }
