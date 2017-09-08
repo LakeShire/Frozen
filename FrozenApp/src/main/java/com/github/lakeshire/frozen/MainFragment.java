@@ -1,9 +1,6 @@
 package com.github.lakeshire.frozen;
 
-import android.content.Intent;
 import android.view.View;
-
-import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +58,8 @@ public class MainFragment extends AbsBottomBarFragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(new Intent(mContext, CaptureActivity.class), 0);
+                PlayFragment dialog = new PlayFragment();
+                dialog.show(getFragmentManager(), "dialog");
             }
         };
     }

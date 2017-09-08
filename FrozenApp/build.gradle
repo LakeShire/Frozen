@@ -27,7 +27,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
     compile project(':FrozenFramework')
-    compile project(':LibZxing')
 //    compile 'android.arch.lifecycle:runtime:1.0.0-alpha9'
 //    compile 'android.arch.lifecycle:extensions:1.0.0-alpha9'
 //    annotationProcessor 'android.arch.lifecycle:compiler:1.0.0-alpha9'
