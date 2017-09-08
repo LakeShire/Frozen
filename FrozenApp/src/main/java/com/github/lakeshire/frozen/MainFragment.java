@@ -1,13 +1,15 @@
 package com.github.lakeshire.frozen;
 
+import android.content.Intent;
 import android.view.View;
+
+import com.xys.libzxing.zxing.activity.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import lakeshire.github.com.frozenframework.fragment.IPager;
 import lakeshire.github.com.frozenframework.fragment.common.AbsBottomBarFragment;
-import lakeshire.github.com.frozenframework.util.CustomToast;
 
 public class MainFragment extends AbsBottomBarFragment {
     @Override
@@ -59,7 +61,7 @@ public class MainFragment extends AbsBottomBarFragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CustomToast(getContext()).showToast("删除");
+                startActivityForResult(new Intent(mContext, CaptureActivity.class), 0);
             }
         };
     }

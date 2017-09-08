@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Frozen.iml" filepath="$PROJECT_DIR$/Frozen.iml" />
       <module fileurl="file://$PROJECT_DIR$/FrozenApp/FrozenApp.iml" filepath="$PROJECT_DIR$/FrozenApp/FrozenApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/FrozenFramework/FrozenFramework.iml" filepath="$PROJECT_DIR$/FrozenFramework/FrozenFramework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibZxing/LibZxing.iml" filepath="$PROJECT_DIR$/LibZxing/LibZxing.iml" />
     </modules>
   </component>
 </project>

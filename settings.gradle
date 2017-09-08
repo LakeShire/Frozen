@@ -1,2 +1,3 @@
 include ':FrozenApp'
 include ':FrozenFramework'
+include ':LibZxing'

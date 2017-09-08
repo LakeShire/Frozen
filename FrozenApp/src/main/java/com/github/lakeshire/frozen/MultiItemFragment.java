@@ -115,8 +115,6 @@ public class MultiItemFragment extends BaseRecyclerViewFragment<MultiInfo> imple
         info.images.add(R.drawable.banner_1);
         mDataList.add(info);
         info = new MultiInfo("多图", "描述", 2);
-        info.images.add(R.drawable.ic_category);
-        info.images.add(R.drawable.ic_home);
         info.images.add(R.drawable.ic_me);
         info.images.add(R.drawable.ic_category);
         info.images.add(R.drawable.ic_home);
