@@ -11,11 +11,17 @@ import lakeshire.github.com.frozenframework.util.CustomToast;
 
 public class MainFragment extends AbsBottomBarFragment {
     @Override
+    public void initUi() {
+        super.initUi();
+        mPager.setOffscreenPageLimit(3);
+    }
+
+    @Override
     protected List<IPager> initFragments() {
         List<IPager> fragments = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            RecyclerViewFragment fragment = new RecyclerViewFragment();
+            MultiItemFragment fragment = new MultiItemFragment();
             fragment.setTabTitle(getTitles()[i]);
             fragments.add(fragment);
         }

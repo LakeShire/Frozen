@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
+
 import lakeshire.github.com.frozenframework.adapter.recyclerview.base.ViewHolder;
 import lakeshire.github.com.frozenframework.adapter.recyclerview.utils.WrapperUtils;
 
@@ -14,13 +15,14 @@ public class LoadMoreWrapper<T> extends RecyclerView.Adapter<RecyclerView.ViewHo
     private RecyclerView.Adapter mInnerAdapter;
     private View mLoadMoreView;
     private int mLoadMoreLayoutId;
+    private boolean noMore = true;
 
     public LoadMoreWrapper(RecyclerView.Adapter adapter) {
         mInnerAdapter = adapter;
     }
 
     private boolean hasLoadMore() {
-        return mLoadMoreView != null || mLoadMoreLayoutId != 0;
+        return (mLoadMoreView != null || mLoadMoreLayoutId != 0) && !noMore;
     }
 
 
@@ -129,5 +131,9 @@ public class LoadMoreWrapper<T> extends RecyclerView.Adapter<RecyclerView.ViewHo
     public LoadMoreWrapper setLoadMoreView(int layoutId) {
         mLoadMoreLayoutId = layoutId;
         return this;
+    }
+
+    public void setNoMore(boolean noMore) {
+        this.noMore = noMore;
     }
 }

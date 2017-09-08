@@ -1,15 +1,13 @@
 package com.github.lakeshire.frozen;
 
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
 import lakeshire.github.com.frozenframework.adapter.recyclerview.MultiItemTypeAdapter;
 import lakeshire.github.com.frozenframework.fragment.BaseRecyclerViewFragment;
 import lakeshire.github.com.frozenframework.fragment.IPager;
 
-/**
- * 含RecyclerView的Fragment基础类
- *
- * @author lakeshire
- */
-public class RecyclerViewFragment extends BaseRecyclerViewFragment<ChatMessage> implements IPager {
+public class ChatFragment extends BaseRecyclerViewFragment<ChatMessage> implements IPager {
     private String title;
 
     @Override
@@ -39,8 +37,6 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<ChatMessage> 
 
     @Override
     public void loadData() {
-        super.loadData();
-
         showLoadingLayout();
         new Thread(new Runnable() {
             @Override
@@ -59,6 +55,16 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<ChatMessage> 
     @Override
     public void initUi() {
         super.initUi();
+    }
+
+    @Override
+    protected void onItemClicked(View view, RecyclerView.ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    protected boolean onItemLongClicked(View view, RecyclerView.ViewHolder holder, int position) {
+        return false;
     }
 
     @Override

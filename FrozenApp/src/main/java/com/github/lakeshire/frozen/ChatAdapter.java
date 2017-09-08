@@ -12,7 +12,7 @@ import lakeshire.github.com.frozenframework.adapter.recyclerview.base.ViewHolder
  * Created by louis.liu on 2017/9/7.
  */
 
-public class ChatAdapter extends MultiItemTypeAdapter<ChatMessage>{
+public class ChatAdapter extends MultiItemTypeAdapter<ChatMessage> {
 
 
     public ChatAdapter(Context context, List<ChatMessage> datas) {

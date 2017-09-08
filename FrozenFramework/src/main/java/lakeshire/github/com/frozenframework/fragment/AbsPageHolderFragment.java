@@ -22,11 +22,6 @@ abstract public class AbsPageHolderFragment extends BasePullFragment {
     abstract public int getContainerLayoutId();
 
     @Override
-    public void loadData() {
-        super.loadData();
-    }
-
-    @Override
     public void initUi() {
         super.initUi();
 

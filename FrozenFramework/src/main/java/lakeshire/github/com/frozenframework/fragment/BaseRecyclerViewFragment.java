@@ -11,12 +11,14 @@ import java.util.List;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import lakeshire.github.com.frozenframework.R;
 import lakeshire.github.com.frozenframework.adapter.recyclerview.MultiItemTypeAdapter;
+import lakeshire.github.com.frozenframework.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import lakeshire.github.com.frozenframework.adapter.recyclerview.wrapper.LoadMoreWrapper;
 import lakeshire.github.com.frozenframework.view.recyclerview.DividerItemDecoration;
 
 /**
  * 含RecyclerView的Fragment基础类
  *
+ * footer和加载更多的同时显示会有问题
  * @author lakeshire
  */
 abstract public class BaseRecyclerViewFragment<T> extends BasePullFragment {
@@ -29,12 +31,18 @@ abstract public class BaseRecyclerViewFragment<T> extends BasePullFragment {
     protected List<T> mDataList = new ArrayList<>();
     protected MultiItemTypeAdapter<T> mAdapter;
     protected LoadMoreWrapper mLoadMoreWrapper;
+    private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
 
     @Override
     public boolean checkCanRefresh(PtrFrameLayout frame, View content, View header) {
         RecyclerView.LayoutManager lm = mRecyclerView.getLayoutManager();
         if (lm instanceof LinearLayoutManager) {
-            return ((LinearLayoutManager) lm).findFirstCompletelyVisibleItemPosition() == 0;
+            boolean isTop =  ((LinearLayoutManager) lm).findFirstCompletelyVisibleItemPosition() == 0;
+            if (mAdapter instanceof IInnerScrollable) {
+                return isTop && !((IInnerScrollable) mAdapter).isInnerScrolling();
+            } else {
+                return isTop;
+            }
         } else {
             return false;
         }
@@ -43,11 +51,6 @@ abstract public class BaseRecyclerViewFragment<T> extends BasePullFragment {
     @Override
     public int getContainerLayoutId() {
         return R.layout.fra_recycler_view;
-    }
-
-    @Override
-    public void loadData() {
-        super.loadData();
     }
 
     @Override
@@ -62,9 +65,22 @@ abstract public class BaseRecyclerViewFragment<T> extends BasePullFragment {
             initDivider();
         }
         mAdapter = initAdapter();
-        mAdapter = addHeaderAndFooter();
+        mAdapter.setOnItemClickListener(new MultiItemTypeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                onItemClicked(view, holder, position);
+            }
 
-        mLoadMoreWrapper = new LoadMoreWrapper(mAdapter);
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return onItemLongClicked(view, holder, position);
+            }
+        });
+
+        mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
+        addHeaderAndFooter();
+
+        mLoadMoreWrapper = new LoadMoreWrapper(mHeaderAndFooterWrapper);
         mLoadMoreWrapper.setLoadMoreView(LayoutInflater.from(mContext).inflate(getFooterLayoutId(), mRecyclerView, false));
         mLoadMoreWrapper.setOnLoadMoreListener(new LoadMoreWrapper.OnLoadMoreListener() {
             @Override
@@ -72,8 +88,13 @@ abstract public class BaseRecyclerViewFragment<T> extends BasePullFragment {
                 loadMoreData();
             }
         });
+
         mRecyclerView.setAdapter(mLoadMoreWrapper);
     }
+
+    abstract protected void onItemClicked(View view, RecyclerView.ViewHolder holder, int position);
+
+    abstract protected boolean onItemLongClicked(View view, RecyclerView.ViewHolder holder, int position);
 
     /**
      * 默认提供分割线
@@ -90,8 +111,8 @@ abstract public class BaseRecyclerViewFragment<T> extends BasePullFragment {
         return true;
     }
 
-    protected MultiItemTypeAdapter<T> addHeaderAndFooter() {
-        return mAdapter;
+    protected void addHeaderAndFooter() {
+
     }
 
     abstract protected MultiItemTypeAdapter<T> initAdapter();
@@ -123,8 +144,8 @@ abstract public class BaseRecyclerViewFragment<T> extends BasePullFragment {
                     }
                 }
 
-                if (mAdapter != null) {
-                    mAdapter.notifyDataSetChanged();
+                if (mLoadMoreWrapper != null) {
+                    mLoadMoreWrapper.notifyDataSetChanged();
                 }
 
                 if (status == STATUES_OK) {
@@ -186,5 +207,13 @@ abstract public class BaseRecyclerViewFragment<T> extends BasePullFragment {
                 mRecyclerView.setVisibility(View.GONE);
             }
         });
+    }
+
+    protected void addHeaderView(View view) {
+        mHeaderAndFooterWrapper.addHeaderView(view);
+    }
+
+    protected void addFooterView(View view) {
+        mHeaderAndFooterWrapper.addFootView(view);
     }
 }

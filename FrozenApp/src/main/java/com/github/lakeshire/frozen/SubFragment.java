@@ -19,7 +19,6 @@ public class SubFragment extends BasePullFragment {
     private FocusImageView mLayoutFocus;
     private List<Banner> mFocusImages = new ArrayList<>();
 
-
     @Override
     public int getContainerLayoutId() {
         return R.layout.fra_sub;
@@ -27,7 +26,7 @@ public class SubFragment extends BasePullFragment {
 
     @Override
     public void loadData() {
-        super.loadData();
+
     }
 
     @Override
@@ -49,7 +48,7 @@ public class SubFragment extends BasePullFragment {
         mFocusImages.add(banner2);
 
         mFocusImageAdapter = new FocusImageAdapter(getActivity().getApplicationContext(),
-                mFocusImages, screenWidth);
+                mFocusImages);
         mLayoutFocus.setAdapter(mFocusImageAdapter);
     }
 

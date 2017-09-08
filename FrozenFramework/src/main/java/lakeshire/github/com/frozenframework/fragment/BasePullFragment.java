@@ -18,7 +18,6 @@ public abstract class BasePullFragment extends BaseFragment {
 
     @Override
     public void initUi() {
-        super.initUi();
         mPtrFrameLayout = (PtrFrameLayout) mContainerView.findViewById(R.id.ptr_frame);
         initPtrFrame();
     }

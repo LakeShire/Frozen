@@ -25,7 +25,7 @@ abstract public class AbsTabFragment extends AbsPageHolderFragment {
 
     @Override
     public void loadData() {
-        super.loadData();
+
     }
 
     @Override

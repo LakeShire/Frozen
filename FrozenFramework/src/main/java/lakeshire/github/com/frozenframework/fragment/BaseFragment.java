@@ -89,13 +89,9 @@ public abstract class BaseFragment extends LifecycleFragment {
         loadData();
     }
 
-    public void loadData() {
+    abstract public void loadData();
 
-    }
-
-    public void initUi() {
-
-    }
+    abstract public void initUi();
 
     public void refresh() {
         if (this instanceof BaseListFragment) {

@@ -19,6 +19,11 @@ abstract public class AbsBottomBarFragment extends AbsPageHolderFragment impleme
     private BottomNavigationBar mBottomNavigationBar;
 
     @Override
+    public void loadData() {
+
+    }
+
+    @Override
     public void initUi() {
         super.initUi();
 

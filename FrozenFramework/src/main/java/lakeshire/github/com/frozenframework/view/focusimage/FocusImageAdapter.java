@@ -14,6 +14,7 @@ import java.util.List;
 
 import lakeshire.github.com.frozenframework.manager.image.Image;
 import lakeshire.github.com.frozenframework.manager.image.ImageLoader;
+import lakeshire.github.com.frozenframework.util.ScreenUtil;
 
 /**
  * @author chadwii
@@ -22,17 +23,15 @@ import lakeshire.github.com.frozenframework.manager.image.ImageLoader;
  * @since Ver 1.1
  */
 public class FocusImageAdapter extends PagerAdapter {
-    private int mWidth;
     private ArrayList<ImageView> mFocusImageView = new ArrayList<>();
     private List<Banner> mFocusImages;
     private boolean isCycleScroll = false;
     private Context mContext;
 
-    public FocusImageAdapter(Context context, List<Banner> list, int width) {
+    public FocusImageAdapter(Context context, List<Banner> list) {
         mFocusImages = list;
         mContext = context;
-        mWidth = width;
-        buildPages(width);
+        buildPages();
     }
 
     public void setCycleScrollFlag(boolean isCycleScroll) {
@@ -146,12 +145,13 @@ public class FocusImageAdapter extends PagerAdapter {
 
     @Override
     public void notifyDataSetChanged() {
-        buildPages(mWidth);
+        buildPages();
         super.notifyDataSetChanged();
 
     }
 
-    public void buildPages(int width) {
+    public void buildPages() {
+        int width = ScreenUtil.getScreenWidth(mContext);
         int resize = mFocusImages.size() - mFocusImageView.size();
         if (resize > 0) {
             for (int i = 0; i < resize; i++) {
