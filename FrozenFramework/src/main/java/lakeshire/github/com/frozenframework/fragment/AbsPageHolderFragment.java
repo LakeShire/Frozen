@@ -10,7 +10,7 @@ import lakeshire.github.com.frozenframework.R;
 import lakeshire.github.com.frozenframework.adapter.PageFragmentAdapter;
 
 /**
- * 有子页面的Fragment
+ * 有子页面的Fragment抽象类
  *
  * @author lakeshire
  */
@@ -39,12 +39,12 @@ abstract public class AbsPageHolderFragment extends BasePullFragment {
     abstract protected List<IPager> initFragments();
 
     @Override
-    protected void onRefresh(PtrFrameLayout frame) {
+    public void onRefresh() {
         refreshComplete();
     }
 
     @Override
-    protected boolean checkCanRefresh(PtrFrameLayout frame, View content, View header) {
+    public boolean checkCanRefresh(PtrFrameLayout frame, View content, View header) {
         return false;
     }
 }

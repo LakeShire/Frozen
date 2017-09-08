@@ -487,7 +487,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
                 if (!mIsDragging) {
-//                    final int count = mViewPager.getAdapter().getCount();
+//                    final int count = mViewPager.initAdapter().getCount();
                     int count = 0;
                     if (realcount > 0) {
                         count = realcount;

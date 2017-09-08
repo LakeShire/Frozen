@@ -63,7 +63,8 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
         }
     }
 
-    protected boolean checkCanRefresh(PtrFrameLayout frame, View content, View header) {
+    @Override
+    public boolean checkCanRefresh(PtrFrameLayout frame, View content, View header) {
         ListView absListView = mListView;
         boolean canRefresh = !(absListView.getChildCount() > 0 && (absListView
                 .getFirstVisiblePosition() > 0 || absListView.getChildAt(0).getTop() <
@@ -88,6 +89,11 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                hideAllLayout();
+                if (refresh) {
+                    refreshComplete();
+                }
+
                 if (status == STATUES_NETWORK_ERROR) {
                     if (refresh) {
                         mDataList.clear();
@@ -104,8 +110,8 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
                     mAdapter.notifyDataSetChanged();
                 }
 
-                if (refresh) {
-                    refreshComplete();
+                if (status == STATUES_OK) {
+                    mListView.setVisibility(View.VISIBLE);
                 }
 
                 if (mListView instanceof LoadMoreListView) {
@@ -134,4 +140,37 @@ public abstract class BaseListFragment<T> extends BasePullFragment implements Ad
 
     @Override
     abstract public void onItemClick(AdapterView<?> parent, View view, int position, long id);
+
+    @Override
+    public void showNetworkErrorLayout() {
+        super.showNetworkErrorLayout();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mListView.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    @Override
+    public void showNoContentLayout() {
+        super.showNoContentLayout();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mListView.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    @Override
+    public void showLoadingLayout() {
+        super.showLoadingLayout();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mListView.setVisibility(View.GONE);
+            }
+        });
+    }
 }

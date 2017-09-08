@@ -4,23 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- 自动添加网络错误、加载中、内容为空等View 需要在外面加一层 -->
     <in.srain.cube.views.ptr.PtrFrameLayout
         android:id="@+id/ptr_frame"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/content"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:orientation="vertical">
 
-            <lakeshire.github.com.frozenframework.view.LoadMoreListView
-                android:id="@+id/list"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:visibility="visible"/>
+
+        </LinearLayout>
     </in.srain.cube.views.ptr.PtrFrameLayout>
 </FrameLayout>

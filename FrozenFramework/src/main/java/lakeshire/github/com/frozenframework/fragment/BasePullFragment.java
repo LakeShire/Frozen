@@ -43,21 +43,17 @@ public abstract class BasePullFragment extends BaseFragment {
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                onRefresh(frame);
+                onRefresh();
             }
         });
 
     }
 
     protected View getHeader() {
-        MaterialHeader header = new MaterialHeader(getActivity());
+        MaterialHeader header = new MaterialHeader(mContext);
         header.setPadding(0, 0, 0, 32);
         return header;
     }
-
-    protected abstract void onRefresh(PtrFrameLayout frame);
-
-    protected abstract boolean checkCanRefresh(PtrFrameLayout frame, View content, View header);
 
     protected void refreshComplete() {
         runOnUiThread(new Runnable() {
@@ -67,4 +63,8 @@ public abstract class BasePullFragment extends BaseFragment {
             }
         });
     }
+
+    abstract protected void onRefresh();
+
+    abstract protected boolean checkCanRefresh(PtrFrameLayout frame, View content, View header);
 }

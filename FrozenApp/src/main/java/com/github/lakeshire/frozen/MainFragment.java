@@ -5,17 +5,17 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-import lakeshire.github.com.frozenframework.fragment.common.BottomBarFragment;
 import lakeshire.github.com.frozenframework.fragment.IPager;
+import lakeshire.github.com.frozenframework.fragment.common.AbsBottomBarFragment;
 import lakeshire.github.com.frozenframework.util.CustomToast;
 
-public class MainFragment extends BottomBarFragment {
+public class MainFragment extends AbsBottomBarFragment {
     @Override
     protected List<IPager> initFragments() {
         List<IPager> fragments = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            SubListFragment fragment = new SubListFragment();
+            RecyclerViewFragment fragment = new RecyclerViewFragment();
             fragment.setTabTitle(getTitles()[i]);
             fragments.add(fragment);
         }
@@ -59,7 +59,7 @@ public class MainFragment extends BottomBarFragment {
     }
 
     /**
-     * 主Fragment必须重写这个
+     * 主Fragment必须重写这个 表示由Activity处理后退事件
      * @return
      */
     @Override

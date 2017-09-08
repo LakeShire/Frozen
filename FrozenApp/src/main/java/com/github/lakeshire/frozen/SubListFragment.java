@@ -8,7 +8,6 @@ import com.github.lakeshire.frozen.manager.SubjectAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.srain.cube.views.ptr.PtrFrameLayout;
 import lakeshire.github.com.frozenframework.adapter.BaseAdapter;
 import lakeshire.github.com.frozenframework.fragment.BaseListFragment;
 import lakeshire.github.com.frozenframework.fragment.IPager;
@@ -26,9 +25,10 @@ public class SubListFragment extends BaseListFragment<String> implements IPager 
 
     @Override
     protected void initData() {
-        for (int i = 0; i < 10; i++) {
-            mDataList.add(tabTitle + RandomUtil.getRandom(1000));
-        }
+//        for (int i = 0; i < 10; i++) {
+//            mDataList.add(tabTitle + RandomUtil.getRandom(1000));
+//        }
+        showLoadingLayout();
     }
 
     @Override
@@ -74,8 +74,9 @@ public class SubListFragment extends BaseListFragment<String> implements IPager 
         });
     }
 
+
     @Override
-    protected void onRefresh(PtrFrameLayout frame) {
+    public void onRefresh() {
         mDataList.clear();
         for (int i = 0; i < 10; i++) {
             mDataList.add(tabTitle + RandomUtil.getRandom(1000));

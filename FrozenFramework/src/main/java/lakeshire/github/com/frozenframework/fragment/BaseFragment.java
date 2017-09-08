@@ -1,6 +1,7 @@
 package lakeshire.github.com.frozenframework.fragment;
 
 import android.arch.lifecycle.LifecycleFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
@@ -12,9 +13,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import lakeshire.github.com.frozenframework.BaseApplication;
 import lakeshire.github.com.frozenframework.R;
 import lakeshire.github.com.frozenframework.activity.BaseActivity;
 
@@ -25,12 +29,18 @@ import lakeshire.github.com.frozenframework.activity.BaseActivity;
  */
 public abstract class BaseFragment extends LifecycleFragment {
 
+    public Context mContext;
     protected ViewGroup mContainerView;
     private List<ImageView> mImageViews = new ArrayList<>();
     private View mLoadingLayout;
     private View mNetworkErrorLayout;
     private View mNoContentLayout;
     private ViewGroup.LayoutParams mLayoutParams;
+
+    public BaseFragment() {
+        super();
+        mContext = BaseApplication.getMyApplicationContext();
+    }
 
     public void startFragment(Class<?> clazz) {
         ((BaseActivity) getActivity()).startFragment(clazz, null);
@@ -88,7 +98,11 @@ public abstract class BaseFragment extends LifecycleFragment {
     }
 
     public void refresh() {
-
+        if (this instanceof BaseListFragment) {
+            ((BaseListFragment) this).onRefresh();
+        } else if (this instanceof BaseRecyclerViewFragment) {
+            ((BaseRecyclerViewFragment) this).onRefresh();
+        }
     }
 
     public abstract int getContainerLayoutId();
@@ -121,6 +135,7 @@ public abstract class BaseFragment extends LifecycleFragment {
     @Override
     public void onResume() {
         super.onResume();
+        Logger.d(this);
         if (!(this instanceof IPager)) {
             hideOrShowTitleBar(isTitleVisible());
             if (isTitleVisible()) {

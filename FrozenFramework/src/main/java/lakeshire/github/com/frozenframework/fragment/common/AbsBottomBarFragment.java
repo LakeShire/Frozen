@@ -1,43 +1,29 @@
 package lakeshire.github.com.frozenframework.fragment.common;
 
 import android.support.v4.view.ViewPager;
-import android.view.View;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
-import in.srain.cube.views.ptr.PtrFrameLayout;
 import lakeshire.github.com.frozenframework.R;
 import lakeshire.github.com.frozenframework.fragment.AbsPageHolderFragment;
 
 /**
- * Created by louis.liu on 2017/9/6.
+ * 带BottomBar的Fragment
+ *
+ * @author lakeshire
  */
-
-abstract public class BottomBarFragment extends AbsPageHolderFragment implements BottomNavigationBar
+abstract public class AbsBottomBarFragment extends AbsPageHolderFragment implements
+        BottomNavigationBar
         .OnTabSelectedListener {
     private BottomNavigationBar mBottomNavigationBar;
 
     @Override
     public void initUi() {
         super.initUi();
-        initBottomBar();
-    }
 
-    private void initBottomBar() {
         mBottomNavigationBar = findView(R.id.bottom_bar);
-        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
-        mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC
-        );
-
-        for (int i = 0; i < getTitles().length; i++) {
-            mBottomNavigationBar.addItem(new BottomNavigationItem(getIcons()[i], getTitles()[i])
-                    .setActiveColorResource(getActiveColors()[i]));
-        }
-
-        mBottomNavigationBar.setFirstSelectedPosition(0).initialise();
-        mBottomNavigationBar.setTabSelectedListener(this);
-
+        initBottomBar();
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -58,14 +44,22 @@ abstract public class BottomBarFragment extends AbsPageHolderFragment implements
         });
     }
 
-    @Override
-    protected void onRefresh(PtrFrameLayout frame) {
-        refreshComplete();
+    private void initBottomBar() {
+        initBottomBarStyle();
+        for (int i = 0; i < getTitles().length; i++) {
+            mBottomNavigationBar.addItem(new BottomNavigationItem(getIcons()[i], getTitles()[i])
+                    .setActiveColorResource(getActiveColors()[i]));
+        }
+        mBottomNavigationBar.initialise();
+        mBottomNavigationBar.setTabSelectedListener(this);
+
     }
 
-    @Override
-    protected boolean checkCanRefresh(PtrFrameLayout frame, View content, View header) {
-        return false;
+    protected void initBottomBarStyle() {
+        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
+        mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC
+        );
+        mBottomNavigationBar.setFirstSelectedPosition(0);
     }
 
     @Override

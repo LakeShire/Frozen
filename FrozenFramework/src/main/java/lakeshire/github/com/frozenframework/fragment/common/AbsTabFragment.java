@@ -1,23 +1,21 @@
 package lakeshire.github.com.frozenframework.fragment.common;
 
 import android.graphics.Color;
-import android.view.View;
 
 import java.util.List;
 
-import in.srain.cube.views.ptr.PtrFrameLayout;
 import lakeshire.github.com.frozenframework.R;
-import lakeshire.github.com.frozenframework.fragment.IPager;
 import lakeshire.github.com.frozenframework.fragment.AbsPageHolderFragment;
+import lakeshire.github.com.frozenframework.fragment.IPager;
 import lakeshire.github.com.frozenframework.util.ScreenUtil;
 import lakeshire.github.com.frozenframework.view.PagerSlidingTabStrip;
 
 /**
- * 有子页面的Fragment
+ * 带Tab的Fragment
  *
  * @author lakeshire
  */
-abstract public class TabFragment extends AbsPageHolderFragment {
+abstract public class AbsTabFragment extends AbsPageHolderFragment {
     protected PagerSlidingTabStrip mTabs;
 
     @Override
@@ -50,17 +48,7 @@ abstract public class TabFragment extends AbsPageHolderFragment {
         mTabs.setDividerPadding(0);
         mTabs.setShouldExpand(true);
         mTabs.setTextSize(14);
-        mTabs.setIndicatorHeight(ScreenUtil.dp2px(getActivity(), 3));
-        mTabs.setTabPaddingLeftRight(ScreenUtil.dp2px(getActivity(), 17));
-    }
-
-    @Override
-    protected void onRefresh(PtrFrameLayout frame) {
-        refreshComplete();
-    }
-
-    @Override
-    protected boolean checkCanRefresh(PtrFrameLayout frame, View content, View header) {
-        return false;
+        mTabs.setIndicatorHeight(ScreenUtil.dp2px(mContext, 3));
+        mTabs.setTabPaddingLeftRight(ScreenUtil.dp2px(mContext, 17));
     }
 }
