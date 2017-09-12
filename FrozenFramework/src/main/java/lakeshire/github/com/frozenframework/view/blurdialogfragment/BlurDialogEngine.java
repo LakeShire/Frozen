@@ -12,16 +12,12 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Build;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
-import lakeshire.github.com.frozenframework.util.ScreenUtil;
 
 /**
  * Encapsulate the whole behaviour to provide a blur effect on a DialogFragment.
@@ -195,13 +191,14 @@ public class BlurDialogEngine {
         //evaluate top offset due to action bar
         int actionBarHeight = 0;
         try {
-            if (mHoldingActivity instanceof ActionBarActivity) {
-                ActionBar supportActionBar
-                        = ((ActionBarActivity) mHoldingActivity).getSupportActionBar();
-                if (supportActionBar != null) {
-                    actionBarHeight = supportActionBar.getHeight();
-                }
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+//            if (mHoldingActivity instanceof ActionBarActivity) {
+//                ActionBar supportActionBar
+//                        = ((ActionBarActivity) mHoldingActivity).getSupportActionBar();
+//                if (supportActionBar != null) {
+//                    actionBarHeight = supportActionBar.getHeight();
+//                }
+//            } else
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                 android.app.ActionBar actionBar = mHoldingActivity.getActionBar();
                 if (actionBar != null) {
                     actionBarHeight = actionBar.getHeight();
@@ -243,8 +240,8 @@ public class BlurDialogEngine {
                 Bitmap.Config.RGB_565);
 
         try {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB
-                    || mHoldingActivity instanceof ActionBarActivity) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+//                    || mHoldingActivity instanceof ActionBarActivity) {
                 //add offset as top margin since actionBar height must also considered when we display
                 // the blurred background. Don't want to draw on the actionBar.
 
