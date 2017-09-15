@@ -1,8 +1,10 @@
 package com.github.lakeshire.frozen
 
 import android.view.View
+import com.github.lakeshire.frozen.manager.HttpManager
 import lakeshire.github.com.frozenframework.fragment.IPager
 import lakeshire.github.com.frozenframework.fragment.common.AbsBottomBarFragment
+import org.jetbrains.anko.toast
 import java.util.*
 
 class MainFragment : AbsBottomBarFragment() {
@@ -21,6 +23,14 @@ class MainFragment : AbsBottomBarFragment() {
         }
 
         return fragments
+    }
+
+    override fun loadData() {
+        super.loadData()
+
+        HttpManager.sManager.movies.subscribe({
+            activity?.toast("获得" + it.total + "部电影")
+        })
     }
 
     override val titles: Array<String>

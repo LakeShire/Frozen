@@ -72,8 +72,8 @@ public class FocusImageView extends RelativeLayout {
         mFocusPager = (ViewPagerInScroll) findViewById(R.id.main_pager);
         mFocusIndicator = (CirclePageIndicator) findViewById(R.id.main_indicator_dot);
 
-        mFocusPager.setDisallowInterceptTouchEventView(
-                (ViewGroup) mFocusPager.getParent(), false);
+//        mFocusPager.setDisallowInterceptTouchEventView(
+//                (ViewGroup) mFocusPager.getParent(), false);
         FixedSpeedScroller mScroller = new FixedSpeedScroller(
                 mFocusPager.getContext(), new DecelerateInterpolator());
         ViewUtil.setViewPagerScroller(mFocusPager, mScroller);

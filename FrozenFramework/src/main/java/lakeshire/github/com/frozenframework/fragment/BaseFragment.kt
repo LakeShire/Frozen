@@ -44,27 +44,32 @@ abstract class BaseFragment : LifecycleFragment() {
         (activity as BaseActivity).endFragment()
     }
 
+    var mContentView: ViewGroup? = null
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mContainerView = inflater!!.inflate(containerLayoutId, container, false) as ViewGroup
-        if (mContainerView is FrameLayout) {
-            mLayoutParams = FrameLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT)
-            (mLayoutParams as FrameLayout.LayoutParams).gravity = Gravity.CENTER
-        } else if (mContainerView is RelativeLayout) {
-            mLayoutParams = RelativeLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT)
-            (mLayoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.CENTER_IN_PARENT)
-        } else if (mContainerView is LinearLayout) {
-            mLayoutParams = LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT)
-            (mLayoutParams as LinearLayout.LayoutParams).gravity = Gravity.CENTER
-        } else {
-            mLayoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT)
+        mContentView = mContainerView.findViewById<ViewGroup>(R.id.layout_content)
+        if (mContentView != null) {
+            if (mContentView is FrameLayout) {
+                mLayoutParams = FrameLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT)
+                (mLayoutParams as FrameLayout.LayoutParams).gravity = Gravity.CENTER
+            } else if (mContentView is RelativeLayout) {
+                mLayoutParams = RelativeLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT)
+                (mLayoutParams as RelativeLayout.LayoutParams).addRule(RelativeLayout.CENTER_IN_PARENT)
+            } else if (mContentView is LinearLayout) {
+                mLayoutParams = LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT)
+                (mLayoutParams as LinearLayout.LayoutParams).gravity = Gravity.CENTER
+            } else {
+                mLayoutParams = ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT)
+            }
         }
         return mContainerView
     }
@@ -98,14 +103,6 @@ abstract class BaseFragment : LifecycleFragment() {
         }
     }
 
-//    fun <T : View> findView(resId: Int): T {
-//        val view = mContainerView.findViewById<View>(resId)
-//        if (view is ImageView) {
-//            mImageViews.add(view)
-//        }
-//        return view as T
-//    }
-
     override fun onResume() {
         super.onResume()
         Logger.d(this)
@@ -135,7 +132,7 @@ abstract class BaseFragment : LifecycleFragment() {
         runOnUiThread(Runnable {
             if (mLoadingLayout == null) {
                 mLoadingLayout = View.inflate(context, loadingLayoutId, null)
-                mContainerView.addView(mLoadingLayout, mLayoutParams)
+                mContentView?.addView(mLoadingLayout, mLayoutParams)
             } else {
                 mLoadingLayout!!.visibility = View.VISIBLE
             }
@@ -148,7 +145,7 @@ abstract class BaseFragment : LifecycleFragment() {
             if (mNetworkErrorLayout == null) {
                 mNetworkErrorLayout = View.inflate(context, networkErrorLayoutId, null)
                 mNetworkErrorLayout!!.setOnClickListener { refresh() }
-                mContainerView.addView(mNetworkErrorLayout, mLayoutParams)
+                mContentView?.addView(mNetworkErrorLayout, mLayoutParams)
             } else {
                 mNetworkErrorLayout!!.visibility = View.VISIBLE
             }
@@ -161,7 +158,7 @@ abstract class BaseFragment : LifecycleFragment() {
             if (mNoContentLayout == null) {
                 mNoContentLayout = View.inflate(context, noContentLayoutId, null)
                 mNoContentLayout?.setOnClickListener { refresh() }
-                mContainerView.addView(mNoContentLayout, mLayoutParams)
+                mContentView?.addView(mNoContentLayout, mLayoutParams)
             } else {
                 mNoContentLayout?.visibility = View.VISIBLE
             }
@@ -192,23 +189,23 @@ abstract class BaseFragment : LifecycleFragment() {
         }
     }
 
-    fun hideOrShowTitleBar(show: Boolean) {
+    open fun hideOrShowTitleBar(show: Boolean) {
         if (activity != null && activity is BaseActivity) {
             (activity as BaseActivity).hideOrShowTitleBar(show)
         }
     }
 
-    fun setAction(res: Int, listener: View.OnClickListener?) {
+    open fun setAction(res: Int, listener: View.OnClickListener?) {
         if (activity != null && activity is BaseActivity) {
             (activity as BaseActivity).setAction(res, listener)
         }
     }
 
-    fun isTitleVisible(): Boolean {
+    open fun isTitleVisible(): Boolean {
         return true
     }
 
-    fun setTitle(title: String) {
+    open fun setTitle(title: String) {
         if (activity != null && activity is BaseActivity) {
             (activity as BaseActivity).setTitle(title)
         }

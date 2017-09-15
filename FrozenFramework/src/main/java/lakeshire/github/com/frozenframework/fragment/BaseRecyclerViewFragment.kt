@@ -20,7 +20,7 @@ import java.util.*
  */
 abstract class BaseRecyclerViewFragment<T> : BasePullFragment() {
 
-    private var mRecyclerView: RecyclerView? = null
+    var mRecyclerView: RecyclerView? = null
     protected var mDataList: MutableList<T> = ArrayList()
     protected lateinit var mAdapter: MultiItemTypeAdapter<T>
     protected lateinit var mLoadMoreWrapper: LoadMoreWrapper<T>

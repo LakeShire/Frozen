@@ -1,5 +1,6 @@
 package com.github.lakeshire.frozen
 
+import `in`.srain.cube.views.ptr.PtrFrameLayout
 import android.graphics.Color
 import android.support.v7.widget.RecyclerView
 import android.view.Gravity
@@ -7,19 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-
 import lakeshire.github.com.frozenframework.adapter.recyclerview.MultiItemTypeAdapter
 import lakeshire.github.com.frozenframework.adapter.recyclerview.common.MultiInfo
 import lakeshire.github.com.frozenframework.adapter.recyclerview.common.MultiInfoAdapter
 import lakeshire.github.com.frozenframework.fragment.BaseRecyclerViewFragment
-import lakeshire.github.com.frozenframework.fragment.IPager
 import lakeshire.github.com.frozenframework.util.CustomToast
 
 /**
  * Created by louis.liu on 2017/9/8.
  */
 
-class MultiItemFragment : BaseRecyclerViewFragment<MultiInfo>(), IPager {
+class MultiItemFragment : BaseRecyclerViewFragment<MultiInfo>(), IScrollPager {
+    private var canRefresh: Boolean = true
+
+    override fun notifyAppBarOffset(offset: Int) {
+        canRefresh = offset >= 0
+    }
+
     override var tabTitle: String = ""
     var count = 0
 
@@ -136,5 +141,10 @@ class MultiItemFragment : BaseRecyclerViewFragment<MultiInfo>(), IPager {
         //        info.images.add(R.drawable.ic_home);
         //        info.images.add(R.drawable.ic_me);
         //        mDataList.add(info);
+    }
+
+    override fun checkCanRefresh(frame: PtrFrameLayout, content: View, header: View): Boolean {
+        var parentCanRefresh = super.checkCanRefresh(frame, content, header)
+        return parentCanRefresh && canRefresh
     }
 }

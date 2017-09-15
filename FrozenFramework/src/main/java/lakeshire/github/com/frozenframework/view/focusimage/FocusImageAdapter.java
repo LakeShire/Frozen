@@ -93,7 +93,7 @@ public class FocusImageAdapter extends PagerAdapter {
         } else {
             pos = position;
         }
-        ImageView iv = null;
+        ImageView iv;
         if (position < mFocusImageView.size()) {
             iv = mFocusImageView.get(position);
             if (mFocusImages == null || mFocusImages.size() <= 0 || position >= mFocusImages.size

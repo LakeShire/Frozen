@@ -14,7 +14,7 @@ class MainActivity : BaseActivity() {
         val fm = supportFragmentManager
         var fragment: Fragment? = fm.findFragmentById(R.id.container)
         if (fragment == null) {
-            fragment = MainFragment()
+            fragment = ScrollingFragment()
             fm.beginTransaction().add(R.id.container, fragment).commit()
         }
     }
