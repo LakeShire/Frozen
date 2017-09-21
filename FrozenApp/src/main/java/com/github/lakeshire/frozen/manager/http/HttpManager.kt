@@ -1,8 +1,7 @@
-package com.github.lakeshire.frozen.manager
+package com.github.lakeshire.frozen.manager.http
 
-import com.github.lakeshire.frozen.ListEntity
-import com.github.lakeshire.frozen.Movie
-import com.github.lakeshire.frozen.MovieService
+import com.github.lakeshire.frozen.model.ListEntity
+import com.github.lakeshire.frozen.model.Movie
 
 import lakeshire.github.com.frozenframework.manager.RetrofitManager
 import rx.Observable

@@ -1,4 +1,4 @@
-package com.github.lakeshire.frozen.manager;
+package com.github.lakeshire.frozen.adapter;
 
 import android.content.Context;
 

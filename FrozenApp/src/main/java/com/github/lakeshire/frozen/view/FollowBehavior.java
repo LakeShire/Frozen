@@ -1,4 +1,4 @@
-package com.github.lakeshire.frozen;
+package com.github.lakeshire.frozen.view;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;

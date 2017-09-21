@@ -1,7 +1,10 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.fragment
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.github.lakeshire.frozen.adapter.ChatAdapter
+import com.github.lakeshire.frozen.model.ChatMessage
+import com.github.lakeshire.frozen.R
 
 import lakeshire.github.com.frozenframework.adapter.recyclerview.MultiItemTypeAdapter
 import lakeshire.github.com.frozenframework.fragment.BaseRecyclerViewFragment

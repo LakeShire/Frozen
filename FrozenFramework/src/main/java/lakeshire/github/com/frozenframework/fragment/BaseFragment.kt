@@ -22,7 +22,7 @@ import java.util.*
 
  * @author lakeshire
  */
-abstract class BaseFragment : LifecycleFragment() {
+abstract class BaseFragment : LifecycleFragment(), View.OnClickListener {
 
     var mContext: Context = BaseApplication.myApplicationContext
     lateinit var mContainerView: ViewGroup
@@ -221,6 +221,10 @@ abstract class BaseFragment : LifecycleFragment() {
 
     open fun getActionListener(): View.OnClickListener? {
         return null
+    }
+
+    override fun onClick(view: View?) {
+
     }
 }
 

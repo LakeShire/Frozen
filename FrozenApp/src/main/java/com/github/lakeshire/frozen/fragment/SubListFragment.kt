@@ -1,11 +1,14 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.fragment
 
 import `in`.srain.cube.views.ptr.PtrFrameLayout
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.github.lakeshire.frozen.R
+import com.github.lakeshire.frozen.adapter.TitleAdapter
 import lakeshire.github.com.frozenframework.adapter.recyclerview.MultiItemTypeAdapter
 import lakeshire.github.com.frozenframework.fragment.BaseListFragment
 import lakeshire.github.com.frozenframework.fragment.BaseRecyclerViewFragment
+import lakeshire.github.com.frozenframework.fragment.IScrollPager
 import lakeshire.github.com.frozenframework.manager.PopupWindowManager
 import lakeshire.github.com.frozenframework.model.MenuItem
 import lakeshire.github.com.frozenframework.util.CustomToast

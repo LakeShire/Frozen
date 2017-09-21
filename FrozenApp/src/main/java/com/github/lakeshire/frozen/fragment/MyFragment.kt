@@ -1,6 +1,8 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.fragment
 
 import android.support.v7.widget.LinearLayoutManager
+import com.github.lakeshire.frozen.R
+import com.github.lakeshire.frozen.adapter.TitleAdapter
 import kotlinx.android.synthetic.main.fra_my.*
 import lakeshire.github.com.frozenframework.fragment.BaseFragment
 import java.util.*

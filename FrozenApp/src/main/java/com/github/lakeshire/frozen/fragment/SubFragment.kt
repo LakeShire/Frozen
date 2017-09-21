@@ -1,10 +1,11 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.fragment
 
 
 import `in`.srain.cube.views.ptr.PtrFrameLayout
 import android.content.DialogInterface
 import android.view.View
 import android.widget.RelativeLayout
+import com.github.lakeshire.frozen.R
 import lakeshire.github.com.frozenframework.fragment.BasePullFragment
 import lakeshire.github.com.frozenframework.util.DialogUtil
 import lakeshire.github.com.frozenframework.util.ScreenUtil

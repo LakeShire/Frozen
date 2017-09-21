@@ -1,8 +1,10 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.activity
 
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import com.github.lakeshire.frozen.R
+import com.github.lakeshire.frozen.fragment.MainScrollingFragment
 import lakeshire.github.com.frozenframework.activity.BaseActivity
 import lakeshire.github.com.frozenframework.util.DialogUtil
 
@@ -14,7 +16,7 @@ class MainActivity : BaseActivity() {
         val fm = supportFragmentManager
         var fragment: Fragment? = fm.findFragmentById(R.id.container)
         if (fragment == null) {
-            fragment = ScrollingFragment()
+            fragment = MainScrollingFragment()
             fm.beginTransaction().add(R.id.container, fragment).commit()
         }
     }

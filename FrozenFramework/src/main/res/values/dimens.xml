@@ -32,4 +32,10 @@
     <dimen name="size_12dp">12dp</dimen>
     <dimen name="title_bar_margin_bottom">8dp</dimen>
     <dimen name="title_bar_margin_height">0dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>

@@ -1,4 +1,4 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.model
 
 import com.google.gson.annotations.SerializedName
 

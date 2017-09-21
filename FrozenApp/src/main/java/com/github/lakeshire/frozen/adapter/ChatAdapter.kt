@@ -1,7 +1,9 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.adapter
 
 import android.content.Context
 import android.widget.ImageView
+import com.github.lakeshire.frozen.model.ChatMessage
+import com.github.lakeshire.frozen.R
 
 import lakeshire.github.com.frozenframework.adapter.recyclerview.MultiItemTypeAdapter
 import lakeshire.github.com.frozenframework.adapter.recyclerview.base.ItemViewDelegate

@@ -1,7 +1,8 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.adapter
 
 import android.content.Context
 import android.widget.TextView
+import com.github.lakeshire.frozen.R
 import lakeshire.github.com.frozenframework.adapter.recyclerview.CommonAdapter
 import lakeshire.github.com.frozenframework.adapter.recyclerview.base.ViewHolder
 

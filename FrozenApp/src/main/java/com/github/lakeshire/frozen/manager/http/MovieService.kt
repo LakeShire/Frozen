@@ -1,5 +1,7 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.manager.http
 
+import com.github.lakeshire.frozen.model.ListEntity
+import com.github.lakeshire.frozen.model.Movie
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable

@@ -1,4 +1,4 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.model
 
 class ChatMessage(var icon: Int, var name: String?, var content: String?,
                   var createDate: String?, var isComMeg: Boolean) {

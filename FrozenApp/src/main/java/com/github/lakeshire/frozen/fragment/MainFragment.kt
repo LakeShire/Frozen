@@ -1,7 +1,8 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.fragment
 
 import android.view.View
-import com.github.lakeshire.frozen.manager.HttpManager
+import com.github.lakeshire.frozen.R
+import com.github.lakeshire.frozen.manager.http.HttpManager
 import lakeshire.github.com.frozenframework.fragment.IPager
 import lakeshire.github.com.frozenframework.fragment.common.AbsBottomBarFragment
 import org.jetbrains.anko.toast
@@ -17,7 +18,7 @@ class MainFragment : AbsBottomBarFragment() {
         val fragments = ArrayList<IPager>()
 
         for (i in 0..2) {
-            val fragment = MultiItemFragment()
+            val fragment = SubListFragment()
             fragment.tabTitle = titles[i]
             fragments.add(fragment)
         }

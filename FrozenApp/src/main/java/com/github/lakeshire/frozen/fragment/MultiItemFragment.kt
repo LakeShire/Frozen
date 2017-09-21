@@ -1,4 +1,4 @@
-package com.github.lakeshire.frozen
+package com.github.lakeshire.frozen.fragment
 
 import `in`.srain.cube.views.ptr.PtrFrameLayout
 import android.graphics.Color
@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.github.lakeshire.frozen.R
 import lakeshire.github.com.frozenframework.adapter.recyclerview.MultiItemTypeAdapter
 import lakeshire.github.com.frozenframework.adapter.recyclerview.common.MultiInfo
 import lakeshire.github.com.frozenframework.adapter.recyclerview.common.MultiInfoAdapter
 import lakeshire.github.com.frozenframework.fragment.BaseRecyclerViewFragment
+import lakeshire.github.com.frozenframework.fragment.IScrollPager
 import lakeshire.github.com.frozenframework.util.CustomToast
 
 /**

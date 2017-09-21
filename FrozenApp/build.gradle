@@ -32,4 +32,9 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':FrozenFramework')
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //  跑马灯效果
+    compile "com.gongwen:marqueelibrary:1.1.1"
+
+    compile 'com.github.hss01248:DialogUtil:1.1.6'
 }
