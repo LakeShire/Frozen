@@ -29,6 +29,7 @@ class MainScrollingFragment : BaseSingleScrollingFragment<Entry>() {
 
     override fun loadData() {
         mDataList.add(Entry("iOS风格对话框", IOSDialogFragment::class.java))
+        mDataList.add(Entry("侧滑列表", SwipeListFragment::class.java))
         for (i in 1..20) {
             mDataList.add(Entry("跑马灯", MarqueeFragment::class.java))
         }

@@ -52,7 +52,6 @@ class IOSDialogFragment : BaseFragment() {
 
     private fun popConfirmDialog() {
         DialogBuilder(activity).iosDialog().setTitle("升级提示").setMessage("有新的版本，建议升级").setPositiveButtonIos().setNegativeButtonIos()
-//        DialogBuilder(activity).iosConfirm("升级提示", "有新的版本，建议升级")
     }
 
     private fun popProgressDialog() {
@@ -80,16 +79,6 @@ class IOSDialogFragment : BaseFragment() {
     }
 
     private fun popSelectDialog() {
-//        val items: MutableList<String> = ArrayList()
-//        items.add("拍照")
-//        items.add("从相册选择")
-//        buildBottomItemDialog(items, "取消", object : MyItemDialogListener() {
-//            override fun onItemClick(msg: CharSequence?, position: Int) {
-//                CustomToast(mContext).showToast(msg.toString())
-//            }
-//        }).setCancelable(true, true).show()
-//        DialogBuilder(activity).iosDialog().setMessage("确定要退出吗").setPositiveButtonIos("退出").setNegativeButtonIos("取消").setNeutralButtonIos("最小化")
-
         DialogBuilder(activity)
                 .iosBottomSheet()
                 .addItem("拍照", View.OnClickListener { CustomToast(mContext).showToast("拍照") })
@@ -99,21 +88,8 @@ class IOSDialogFragment : BaseFragment() {
     }
 
     private fun popSimpleDialog() {
-//        buildIosAlert("标题", "消息", DialogListenerAdapter()).show()
-//        buildIosAlertVertical("标题", "消息", DialogListenerAdapter()).show()
-//        StyledDialog.buildLoading().show()
-
-//        DialogBuilder(activity)
-//                .setTitle("标题")
-//                .setMessage("消息")
-//                .setPositiveButton("好") { _, _ -> CustomToast(mContext).showToast("好") }
-//                .setNegativeButton("不好") { _, _ -> CustomToast(mContext).showToast("不好") }
-//                .setNeutralButton("随便", null)
-//                .show()
-
         DialogBuilder(activity).mdDialog().setTitle("升级提示").setMessage("有新版本，建议升级").setPositiveButtonMd("知道了").show()
 //        DialogBuilder(activity).iosDialog().setTitle("升级提示").setMessage("有新版本，建议升级").setPositiveButton("知道了")
-//        DialogBuilder(activity).iosAlert("升级提示", "有新的版本，建议升级", "知道了")
     }
 
     override fun isTitleVisible(): Boolean {

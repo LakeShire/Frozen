@@ -18,7 +18,7 @@ class MainFragment : AbsBottomBarFragment() {
         val fragments = ArrayList<IPager>()
 
         for (i in 0..2) {
-            val fragment = SubListFragment()
+            val fragment = SwipeListFragment()
             fragment.tabTitle = titles[i]
             fragments.add(fragment)
         }
