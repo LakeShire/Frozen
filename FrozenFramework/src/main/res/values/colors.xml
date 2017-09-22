@@ -22,4 +22,5 @@
     <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
 
     <color name="theme">@color/orange</color>
+    <color name="blue">#ff33b5e5</color>
 </resources>
